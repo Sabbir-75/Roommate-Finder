@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from "../../assets/Green_Minimalist_Home_Logo___1_-removebg-preview.png"
+import logo from "../../assets/Green_Minimalist_Home_Logo___2_-removebg-preview.png"
 import { Link } from 'react-router';
 
 const Footer = () => {

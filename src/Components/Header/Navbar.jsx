@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 import { CgProfile } from "react-icons/cg";
-import logo from "../../assets/Green_Minimalist_Home_Logo___1_-removebg-preview.png"
+import logo from "../../assets/Green_Minimalist_Home_Logo___2_-removebg-preview.png"
 import "./Navbar.css"
 
 const Navbar = () => {
