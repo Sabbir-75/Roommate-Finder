@@ -1,9 +1,13 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router';
 
 const Login = () => {
     return (
         <div className="hero px-6 my-4 md:my-10">
+              <Helmet>
+                <title>Roommate Hunt || Login</title>
+            </Helmet>
             <div className="card bg-base-100 w-full border-[#372727] border-[2px] max-w-sm shrink-0 shadow-2xl">
                 <div className="card-body">
                     <h1 className="text-5xl font-bold text-center mb-5">Login now!</h1>

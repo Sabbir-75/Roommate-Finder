@@ -1,9 +1,13 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 const AddRoommate = () => {
     return (
         <div className="hero my-10 px-4">
-            <div className="card bg-base-100 w-full border-[#372727] border-[2px] max-w-xl shrink-0 shadow-2xl">
+             <Helmet>
+                <title>Roommate Hunt || Find Roommate</title>
+            </Helmet>
+            <div className="card bg-white w-full border-[#372727] border-[2px] max-w-xl shrink-0 shadow-2xl">
                 <div className="card-body">
                     <h1 className="text-5xl font-bold text-center mb-5">Find Roommate</h1>
                     <form className="fieldset">
