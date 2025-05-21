@@ -14,13 +14,13 @@ const Footer = () => {
                 </div>
                 <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
                     <div className='space-y-3'>
-                        <h3 className="uppercase text-[#DC143C]">Contact Us</h3>
+                        <h3 className="uppercase text-black font-semibold">Contact Us</h3>
                         <p className='cursor-pointer hover:text-[#DC143C] border-b-[2px] border-transparent hover:border-[#DC143C] duration-200'>Email: kazisabbir4361@gmail.com</p>
                         <p className='cursor-pointer hover:text-[#DC143C] border-b-[2px] border-transparent hover:border-[#DC143C] duration-200'>Mobile: 01756750000</p>
                         <p className='cursor-pointer hover:text-[#DC143C] border-b-[2px] border-transparent hover:border-[#DC143C] duration-200'>Address: Kushtia, Daulatpur , bangladesh</p>
                     </div>
                     <div className="space-y-3">
-                        <h3 className="tracking-wide uppercase text-[#DC143C]">Company</h3>
+                        <h3 className="tracking-wide uppercase text-black font-semibold">Company</h3>
                         <ul className="space-y-1">
                             <li>
                                 <a className='hover:text-[#DC143C] border-b-[2px] border-transparent hover:border-[#DC143C] duration-200' rel="noopener noreferrer" href="#">Privacy</a>
@@ -31,7 +31,7 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div className="space-y-3">
-                        <h3 className="uppercase text-[#DC143C]">Developers</h3>
+                        <h3 className="uppercase text-black font-semibold">Developers</h3>
                         <ul className="space-y-1">
                             <li>
                                 <a className='hover:text-[#DC143C] border-b-[2px] border-transparent hover:border-[#DC143C] duration-200' rel="noopener noreferrer" href="#">Public API</a>
@@ -45,7 +45,7 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div className="space-y-3">
-                        <div className="uppercase text-[#DC143C]">Social media</div>
+                        <div className="uppercase text-black font-semibold">Social media</div>
                         <div className="flex justify-start space-x-3">
                             <Link to={"https://www.facebook.com/share/19xnNnuazu/"} rel="noopener noreferrer" target='blank'  title="Facebook" className="flex items-center p-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-6 h-6 rounded-full duration-300 hover:text-blue-700 hover:bg-white fill-current">

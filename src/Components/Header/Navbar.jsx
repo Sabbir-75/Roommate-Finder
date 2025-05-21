@@ -1,14 +1,17 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { NavLink, useLocation, useNavigate } from 'react-router';
 import { CgProfile } from "react-icons/cg";
 import logo from "../../assets/Green_Minimalist_Home_Logo___1_-removebg-preview.png"
+import "./Navbar.css"
 
 const Navbar = () => {
+    const navigate = useNavigate()
+    const {pathname} = useLocation()
     const nav = <>
-        <li className='hover:text-[#DC143C] border-b-[3px] border-transparent hover:border-[#DC143C] duration-400'><NavLink>Home</NavLink></li>
-        <li className='hover:text-[#DC143C] border-b-[3px] border-transparent hover:border-[#DC143C] duration-400'><NavLink>Add Roommate</NavLink></li>
-        <li className='hover:text-[#DC143C] border-b-[3px] border-transparent hover:border-[#DC143C] duration-400'><NavLink>Browse Listing</NavLink></li>
-        <li className='hover:text-[#DC143C] border-b-[3px] border-transparent hover:border-[#DC143C] duration-400'><NavLink>My Listings</NavLink></li>
+        <li className='myclass hover:text-[#DC143C] duration-400'><NavLink to={"/"}>Home</NavLink></li>
+        <li className='myclass hover:text-[#DC143C] duration-400'><NavLink to={"/findoommate"}>Find Roommate</NavLink></li>
+        <li className='myclass hover:text-[#DC143C] duration-400'><NavLink to={"/browselisting"}>Browse Listing</NavLink></li>
+        <li className='myclass hover:text-[#DC143C] duration-400'><NavLink to={"/mylisting"}>My Listings</NavLink></li>
     </>
     return (
         <div className="navbar bg-base-100 shadow-sm">
@@ -19,7 +22,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="myclass menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         {nav}
                     </ul>
                 </div>
@@ -28,11 +31,11 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="myclass text-base font-medium flex gap-7 px-1">
+                <ul className="text-base font-medium flex gap-7 px-1">
                     {nav}
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="mynewclass navbar-end">
                 <div className='relative flex w-[70px] h-[70px] group items-center'>
                     <CgProfile size={35} color='#DC143C' />
                     {/* {
@@ -44,14 +47,14 @@ const Navbar = () => {
                         </div>
                     } */}
                 </div>
-                <NavLink className="rounded-md flex justify-center items-center px-3.5 py-1.5 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-[#DC143C] text-[#DC143C]">
+                <button onClick={() => navigate("login")} className={`rounded-md flex justify-center items-center px-3.5 py-1.5 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium ${(pathname === "/login") && "bg-[#DC143C]"} border-[#DC143C]`}>
                     <span className="absolute w-64 h-0 transition-all duration-500 origin-center rotate-45 -translate-x-20 bg-[#DC143C] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
-                    <span className="relative text-[#DC143C] transition duration-300 group-hover:text-white ease">Login</span>
-                </NavLink>
-                <NavLink className="rounded-md flex justify-center items-center px-3.5 py-1.5 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-[#DC143C] text-[#DC143C]">
-                    <span className="absolute w-64 h-0 transition-all duration-500 origin-center rotate-45 -translate-x-20 bg-[#DC143C] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
-                    <span className="relative text-[#DC143C] transition duration-300 group-hover:text-white ease">Signup</span>
-                </NavLink>
+                    <span className={`relative text-[#DC143C] transition duration-300 ${(pathname === "/login") && "text-white"} group-hover:text-white ease`}>Login</span>
+                </button>
+                <button onClick={() => navigate("signup")} className={`rounded-md flex justify-center items-center px-3.5 py-1.5 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium  ${(pathname === "/signup") && "bg-[#DC143C]"} border-[#DC143C]`}>
+                    <span className={`absolute w-64 h-0 transition-all duration-500 origin-center rotate-45 -translate-x-20 bg-[#DC143C] top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease`}></span>
+                    <span className={`relative text-[#DC143C] transition duration-300 ${(pathname === "/signup") && "text-white"} group-hover:text-white ease`}>Signup</span>
+                </button>
             </div>
         </div>
     );
