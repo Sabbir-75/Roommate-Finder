@@ -10,7 +10,7 @@ const Slider = ({ loaderdata }) => {
     return (
 
         <div className="container bg-white flex flex-col justify-center p-6 mx-auto py-2 md:py-4 lg:flex-row lg:justify-between">
-            <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
+            <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md lg:text-left">
                 <h1 className='text-black text-4xl lg:text-5xl font-bold'>Connect with <span className='text-[#DC143C]'>Roommates</span> Who Fit Your Lifestyle and Budget</h1>
                 <div className="flex mt-2 md:mt-6 flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
                     <button className={`rounded-md flex justify-center items-center px-6 py-3 m-1 overflow-hidden relative group cursor-pointer bg-[#DC143C] border-2 font-medium border-[#DC143C]`}>

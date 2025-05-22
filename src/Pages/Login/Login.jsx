@@ -1,11 +1,53 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { Bounce, toast } from 'react-toastify';
 
 const Login = () => {
+    const { signin, setUserData } = use(AuthContext)
+    const Navigate = useNavigate()
+    const loginHandler = (e) => {
+        e.preventDefault()
+        const form = e.target
+        const formData = new FormData(form)
+        const { email, password } = Object.fromEntries(formData.entries())
+        console.log(email, password);
+
+        signin(email, password)
+            .then(result => {
+                toast.success('🦄 Success Profile create', {
+                    position: "top-right",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    transition: Bounce
+                });
+                setUserData(result.user)
+                Navigate("/")
+            })
+            .catch(error => {
+                 toast.error(`${error.code}`, {
+                    position: "top-right",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    transition: Bounce
+                });
+            })
+
+    }
     return (
         <div className="hero px-6 my-4 md:my-10">
-              <Helmet>
+            <Helmet>
                 <title>Roommate Hunt || Login</title>
             </Helmet>
             <div className="card bg-base-100 w-full border-[#372727] border-[2px] max-w-sm shrink-0 shadow-2xl">
@@ -20,7 +62,7 @@ const Login = () => {
                         <p className="px-3 dark:text-gray-800">OR</p>
                         <hr className="w-full dark:text-gray-800" />
                     </div>
-                    <form className="fieldset">
+                    <form onSubmit={loginHandler} className="fieldset">
                         <label className="label">Email</label>
                         <input type="email" name='email' className="input w-full" placeholder="Email" />
                         <label className="label">Password</label>

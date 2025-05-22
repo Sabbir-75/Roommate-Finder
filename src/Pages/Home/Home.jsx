@@ -9,7 +9,7 @@ const Home = () => {
     return (
         <div>
             <Helmet>
-                <title>Roommate Hunt || home</title>
+                <title>Roommate Hunt || Home</title>
             </Helmet>
             <Marquee pauseOnHover={true}>
                 <p className='py-3 text-base text-white font-semibold bg-[#DC143C]'>"Find Your Perfect Roommate Today! | Safe, Verified Profiles Only | Search by Budget, Location & Lifestyle | Browse Rooms & Apartments Nearby | Chat, Connect, and Match Instantly | No More Awkward Roommate Situations | Easy Sign-Up, Fast Matches | Join Thousands Finding the Right Fit! | Save Time, Avoid Scams | Start Your Shared Living Journey Now!"</p>
