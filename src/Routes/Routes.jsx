@@ -4,6 +4,9 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
 import AddRoommate from "../Pages/AddRoommate/AddRoommate";
+import Details from "../Pages/Details/Details";
+import Browsing from "../Pages/Browsing/Browsing";
+import MyListing from "../Pages/MyListing/MyListing";
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +29,19 @@ export const router = createBrowserRouter([
             {
                 path: "/findoommate",
                 Component: AddRoommate
+            },
+            {
+                path: "/browsing",
+                Component: Browsing
+            },
+            {
+                path: "/mylisting",
+                loader: () => fetch("http://localhost:5000/roommates"),
+                Component: MyListing
+            },
+            {
+                path: "/details",
+                Component: Details
             },
         ]
     }

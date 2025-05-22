@@ -9,8 +9,8 @@ const AuthProvider = ({ children }) => {
 
     const useAllData = use(resallData)
     const useSortData = use(resSortData)
-    const [sortData, setsortData] = useState(useAllData)
-    const [allData, setAllData] = useState(useSortData)
+    const [allData, setAllData] = useState(useAllData)
+    const [sortData, setsortData] = useState(useSortData)
     const [userData, setUserData] = useState(null)
     const [loading, setLoading] = useState(true)
 
@@ -60,7 +60,10 @@ const AuthProvider = ({ children }) => {
         googleAccount,
         signin,
         ProfileUpdate,
-        logout
+        logout,
+        sortData,
+        setsortData,
+        allData
     }
     return (
         <AuthContext value={authValue}>

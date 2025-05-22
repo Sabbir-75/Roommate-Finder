@@ -13,7 +13,7 @@ const Navbar = () => {
     const nav = <>
         <li className='myclass hover:text-[#DC143C] duration-400'><NavLink to={"/"}>Home</NavLink></li>
         <li className='myclass hover:text-[#DC143C] duration-400'><NavLink to={"/findoommate"}>Find Roommate</NavLink></li>
-        <li className='myclass hover:text-[#DC143C] duration-400'><NavLink to={"/browselisting"}>Browse Listing</NavLink></li>
+        <li className='myclass hover:text-[#DC143C] duration-400'><NavLink to={"/browsing"}>Browse Listing</NavLink></li>
         <li className='myclass hover:text-[#DC143C] duration-400'><NavLink to={"/mylisting"}>My Listings</NavLink></li>
     </>
 

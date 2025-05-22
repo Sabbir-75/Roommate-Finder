@@ -4,7 +4,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const AddRoommate = () => {
-    const { userData } = use(AuthContext)
+    const { userData, } = use(AuthContext)
     const roommateFinderHandler = (e) => {
         e.preventDefault()
         const form = e.target
@@ -73,10 +73,10 @@ const AddRoommate = () => {
                                     className="input"
                                 >
                                     <option>Select a Lifestyle Preferences</option>
-                                    <option value="single">Pets</option>
-                                    <option value="shared">Smoking</option>
-                                    <option value="double">Night </option>
-                                    <option value="double">Owl </option>
+                                    <option value="Pets">Pets</option>
+                                    <option value="Smoking">Smoking</option>
+                                    <option value="Night">Night </option>
+                                    <option value="Owl">Owl </option>
                                 </select>
                             </div>
                             <div className='text-gray-700'>
@@ -96,15 +96,14 @@ const AddRoommate = () => {
                                 <input required type="number" name='contact' className="input" placeholder="Contact Info" />
                             </div>
                             <div className='text-gray-600'>
-                                <label className="label">Availability </label>
+                                <label className="label">Availability</label>
                                 <select
                                     required
-                                    name="availability "
+                                    name="availability"
                                     className="input"
                                 >
-                                    <option>Availability </option>
-                                    <option value="single">Available</option>
-                                    <option value="shared">Not available</option>
+                                    <option value="Available">Available</option>
+                                    <option value="Not available">Not available</option>
                                 </select>
                             </div>
                             <div>
