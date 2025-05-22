@@ -11,7 +11,7 @@ const AddRoommate = () => {
         const formData = new FormData(form)
         const newFormData = Object.fromEntries(formData.entries())
 
-        fetch("http://localhost:5000/users", {
+        fetch("http://localhost:5000/roommates", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -23,7 +23,7 @@ const AddRoommate = () => {
                 if (data.insertedId) {
                     Swal.fire({
                         icon: "success",
-                        title: "Your work has been saved",
+                        title: "roommate data has been saved to database",
                         showConfirmButton: false,
                         timer: 1500
                     });

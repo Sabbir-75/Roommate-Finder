@@ -1,10 +1,16 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, use, useEffect, useState } from 'react';
 import { auth } from '../Firebase.config';
 import { createUserWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, updateProfile, signOut } from 'firebase/auth';
 export const AuthContext = createContext()
+const resallData = fetch("http://localhost:5000/roommates").then(res => res.json())
+const resSortData = fetch("http://localhost:5000/roommates/latest").then(res => res.json())
 
 const AuthProvider = ({ children }) => {
 
+    const useAllData = use(resallData)
+    const useSortData = use(resSortData)
+    const [sortData, setsortData] = useState(useAllData)
+    const [allData, setAllData] = useState(useSortData)
     const [userData, setUserData] = useState(null)
     const [loading, setLoading] = useState(true)
 
