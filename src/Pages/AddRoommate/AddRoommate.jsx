@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Helmet } from 'react-helmet';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const AddRoommate = () => {
+    const {userData} = use(AuthContext)
+    const roommateFinderHandler = (e) => {
+      e.preventDefault()
+      const form = e.target
+      const formData = new FormData(form)
+      const newFormData = Object.fromEntries(formData.entries())
+      console.log(newFormData);
+    }
     return (
         <div className="hero my-10 px-4">
              <Helmet>
@@ -10,7 +19,7 @@ const AddRoommate = () => {
             <div className="card bg-white w-full border-[#372727] border-[2px] max-w-xl shrink-0 shadow-2xl">
                 <div className="card-body">
                     <h1 className="text-5xl font-bold text-center mb-5">Find Roommate</h1>
-                    <form className="fieldset">
+                    <form onSubmit={roommateFinderHandler} className="fieldset">
                         <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
                             <div>
                                 <label className="label">Title </label>
@@ -81,11 +90,11 @@ const AddRoommate = () => {
                             </div>
                             <div>
                                 <label className="label">User Email</label>
-                                <input required type="email" name='email' className="input" placeholder="User Email" />
+                                <input required type="email" name='email' className="input" value={userData?.email} />
                             </div>
                             <div>
                                 <label className="label">User Name</label>
-                                <input required type="text" name='name' className="input" placeholder="User Name" />
+                                <input required type="text" name='name' className="input" value={userData?.displayName} />
                             </div>
 
                         </div>
