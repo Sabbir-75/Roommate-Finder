@@ -1,9 +1,4 @@
-.myclass{
-    border-bottom: 3px solid transparent;
-}
-.myclass:hover{
-    border-bottom: 3px solid crimson;
-}
+
 .myclass a.active{
     color: #DC143C;
     border-bottom: 3px solid crimson;

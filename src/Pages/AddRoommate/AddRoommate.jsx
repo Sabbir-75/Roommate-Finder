@@ -1,19 +1,38 @@
 import React, { use } from 'react';
 import { Helmet } from 'react-helmet';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const AddRoommate = () => {
-    const {userData} = use(AuthContext)
+    const { userData } = use(AuthContext)
     const roommateFinderHandler = (e) => {
-      e.preventDefault()
-      const form = e.target
-      const formData = new FormData(form)
-      const newFormData = Object.fromEntries(formData.entries())
-      console.log(newFormData);
+        e.preventDefault()
+        const form = e.target
+        const formData = new FormData(form)
+        const newFormData = Object.fromEntries(formData.entries())
+
+        fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newFormData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Your work has been saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
     }
     return (
         <div className="hero my-10 px-4">
-             <Helmet>
+            <Helmet>
                 <title>Roommate Hunt || Find Roommate</title>
             </Helmet>
             <div className="card bg-white w-full border-[#372727] border-[2px] max-w-xl shrink-0 shadow-2xl">
