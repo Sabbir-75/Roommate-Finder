@@ -6,7 +6,7 @@ import { Bounce, toast } from 'react-toastify';
 
 const Signup = () => {
 
-    const { createAccout, setUserData, googleAccount } = use(AuthContext)
+    const { createAccout, setUserData, googleAccount, ProfileUpdate } = use(AuthContext)
     const Navigate = useNavigate()
 
     const SignupHandler = (e) => {
@@ -34,20 +34,43 @@ const Signup = () => {
 
         createAccout(email, password)
             .then(result => {
-                // console.log(result.user);
-                toast.success('🦄 Success Profile create', {
-                    position: "top-right",
-                    autoClose: 1000,
-                    hideProgressBar: false,
-                    closeOnClick: false,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
-                    transition: Bounce
-                });
-                setUserData(result.user)
-                Navigate("/")
+                console.log(result.user);
+                const profile = {
+                    displayName: name,
+                    photoURL: photo
+                }
+
+                ProfileUpdate(profile)
+                    .then(result => {
+                        console.log(result.user);
+                        toast.success('🦄 Profile create Successfully', {
+                            position: "top-right",
+                            autoClose: 1000,
+                            hideProgressBar: false,
+                            closeOnClick: false,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "colored",
+                            transition: Bounce
+                        });
+                        setUserData(result.user)
+                        Navigate("/")
+                    })
+                    .catch(error => {
+                        toast.error(`${error.code}`, {
+                            position: "top-right",
+                            autoClose: 1000,
+                            hideProgressBar: false,
+                            closeOnClick: false,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "colored",
+                            transition: Bounce
+                        });
+                    })
+
             })
             .catch(error => {
                 // console.log(error.message);
