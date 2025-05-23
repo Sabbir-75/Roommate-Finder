@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { use } from 'react';
 import { MdDelete } from 'react-icons/md';
 import { RiEdit2Fill } from 'react-icons/ri';
 import { useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const MyData = ({ index, singleData, myListing, setMyListing }) => {
+    const {allData, setAllData} = use(AuthContext)
     const { _id, title, location, amount, roomType } = singleData
-    const Navigate = useNavigate()
+    const navigate = useNavigate()
 
     const deleteHandler = (id) => {
         Swal.fire({
@@ -27,6 +29,8 @@ const MyData = ({ index, singleData, myListing, setMyListing }) => {
                         if (data.deletedCount) {
                             const remainingData = myListing.filter(data => data._id !== id)
                             setMyListing(remainingData)
+                            const newAllDataRemaining = allData.filter(data => data._id !== id)
+                            setAllData(newAllDataRemaining)
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your file has been deleted.",
@@ -54,7 +58,7 @@ const MyData = ({ index, singleData, myListing, setMyListing }) => {
             <td>{location}</td>
             <td>${amount}</td>
             <th className='flex justify-center gap-2'>
-                <button onClick={Navigate(`/update/${_id}`)} className="btn  bg-teal-500 hover:bg-teal-600 duration-200 text-white btn-xs"><RiEdit2Fill /> Update</button>
+                <button onClick={() => navigate(`/update/${_id}`)} className="btn  bg-teal-500 hover:bg-teal-600 duration-200 text-white btn-xs"><RiEdit2Fill /> Update</button>
                 <button onClick={() => deleteHandler(_id)} className="btn bg-red-500 hover:bg-red-600 duration-200 text-white btn-xs"><MdDelete /> Delete</button>
             </th>
         </tr>

@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import MyData from './MyData';
+import { Helmet } from 'react-helmet';
 
 const MyListing = () => {
     const { userData } = use(AuthContext)
@@ -13,6 +14,9 @@ const MyListing = () => {
     }, [useData,userData])
     return (
         <div className="max-w-[1200px] mx-auto overflow-x-auto border-2 border-[#FF5577] rounded-lg">
+             <Helmet>
+                <title>Roommate Hunt || MyListing</title>
+            </Helmet>
             <table className="table">
                 {/* head */}
                 <thead>

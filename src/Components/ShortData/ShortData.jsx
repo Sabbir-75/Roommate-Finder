@@ -7,7 +7,7 @@ const ShortData = ({ data }) => {
             <div className="rounded-md shadow-xl dark:bg-gray-200 border-t-8 border-[#DC143C] dark:text-gray-800">
                 <div className="flex flex-col justify-between p-6 space-y-8">
                     <div className="space-y-2">
-                        <h2 className="text-3xl font-semibold tracking-wide">{title}</h2>
+                        <h2 className="text-3xl font-semibold break-words">{title}</h2>
                         <p className="dark:text-gray-800 text-base font-normal">Room Type: <span className='font-semibold'>{roomType}</span></p>
                         <p className="dark:text-gray-800 text-base font-normal">Ammount: <span className='font-semibold'>${amount}</span></p>
                         <p className="dark:text-gray-800 text-base font-normal">Location: <span className='font-semibold'>{location}</span></p>
