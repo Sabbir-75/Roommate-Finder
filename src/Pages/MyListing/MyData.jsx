@@ -1,10 +1,12 @@
 import React from 'react';
 import { MdDelete } from 'react-icons/md';
 import { RiEdit2Fill } from 'react-icons/ri';
+import { useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 
 const MyData = ({ index, singleData, myListing, setMyListing }) => {
     const { _id, title, location, amount, roomType } = singleData
+    const Navigate = useNavigate()
 
     const deleteHandler = (id) => {
         Swal.fire({
@@ -35,6 +37,7 @@ const MyData = ({ index, singleData, myListing, setMyListing }) => {
             }
         });
     }
+    
     return (
         <tr>
             <td>
@@ -51,7 +54,7 @@ const MyData = ({ index, singleData, myListing, setMyListing }) => {
             <td>{location}</td>
             <td>${amount}</td>
             <th className='flex justify-center gap-2'>
-                <button className="btn  bg-teal-500 hover:bg-teal-600 duration-200 text-white btn-xs"><RiEdit2Fill /> Update</button>
+                <button onClick={Navigate(`/update/${_id}`)} className="btn  bg-teal-500 hover:bg-teal-600 duration-200 text-white btn-xs"><RiEdit2Fill /> Update</button>
                 <button onClick={() => deleteHandler(_id)} className="btn bg-red-500 hover:bg-red-600 duration-200 text-white btn-xs"><MdDelete /> Delete</button>
             </th>
         </tr>

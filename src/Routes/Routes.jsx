@@ -7,6 +7,7 @@ import AddRoommate from "../Pages/AddRoommate/AddRoommate";
 import Details from "../Pages/Details/Details";
 import Browsing from "../Pages/Browsing/Browsing";
 import MyListing from "../Pages/MyListing/MyListing";
+import Update from "../Pages/Update/Update";
 
 export const router = createBrowserRouter([
     {
@@ -42,6 +43,11 @@ export const router = createBrowserRouter([
             {
                 path: "/details",
                 Component: Details
+            },
+            {
+                path: "/update/:id",
+                loader: ({params}) => fetch(`http://localhost:5000/roommates/${params.id}`),
+                Component: Update
             },
         ]
     }
