@@ -12,6 +12,7 @@ const Brows = ({data}) => {
                         <p className="dark:text-gray-800 text-base font-normal">Ammount: <span className='font-semibold'>${amount}</span></p>
                         <p className="dark:text-gray-800 text-base font-normal">Location: <span className='font-semibold'>{location}</span></p>
                         <p className="dark:text-gray-800 text-base font-normal">Availability: <span className='font-semibold px-2 py-1 bg-blue-400 text-white rounded-[5px]'>{availability}</span></p>
+                       <button className='px-4 py-2 bg-red-600 text-white rounded-[3px]'>delete</button>
                     </div>
                     <button type="button" className="flex cursor-pointer items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-[#DC143C] dark:text-gray-50">See more</button>
                 </div>

@@ -4,7 +4,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const AddRoommate = () => {
-    const { userData, } = use(AuthContext)
+    const { userData, allData, setAllData } = use(AuthContext)
     const roommateFinderHandler = (e) => {
         e.preventDefault()
         const form = e.target
@@ -21,6 +21,9 @@ const AddRoommate = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
+                    newFormData._id = data.insertedId  // don't need reload page
+                    const remainingData = [...allData, newFormData]   // don't need reload page
+                    setAllData(remainingData)  // don't need reload page
                     Swal.fire({
                         icon: "success",
                         title: "roommate data has been saved to database",

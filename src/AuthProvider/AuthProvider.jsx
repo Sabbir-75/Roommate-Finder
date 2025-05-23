@@ -3,16 +3,22 @@ import { auth } from '../Firebase.config';
 import { createUserWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, updateProfile, signOut } from 'firebase/auth';
 export const AuthContext = createContext()
 const resallData = fetch("http://localhost:5000/roommates").then(res => res.json())
-const resSortData = fetch("http://localhost:5000/roommates/latest").then(res => res.json())
 
 const AuthProvider = ({ children }) => {
 
     const useAllData = use(resallData)
-    const useSortData = use(resSortData)
     const [allData, setAllData] = useState(useAllData)
-    const [sortData, setsortData] = useState(useSortData)
+    const [sortData, setsortData] = useState([])
     const [userData, setUserData] = useState(null)
     const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+       const filteredData = allData.filter(data => data.availability === "Available")
+       const availablityData = filteredData.slice(-6).reverse()
+       setsortData(availablityData)
+    },[allData])
+
+
 
     const createAccout = (email, password) => {
         setLoading(true)
@@ -63,7 +69,8 @@ const AuthProvider = ({ children }) => {
         logout,
         sortData,
         setsortData,
-        allData
+        allData,
+        setAllData
     }
     return (
         <AuthContext value={authValue}>
