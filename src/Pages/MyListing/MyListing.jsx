@@ -13,7 +13,7 @@ const MyListing = () => {
         setMyListing(filteredData)
     }, [useData,userData])
     return (
-        <div className="max-w-[1200px] mx-auto overflow-x-auto border-2 border-[#FF5577] rounded-lg">
+        <div className="max-w-[1200px] mx-auto my-4 md:my-10 overflow-x-auto border-2 border-[#FF5577] rounded-lg">
              <Helmet>
                 <title>Roommate Hunt || MyListing</title>
             </Helmet>
@@ -25,6 +25,7 @@ const MyListing = () => {
                         <th>TITLE</th>
                         <th>ROOM TYPE</th>
                         <th>LOCATION</th>
+                        <th>Lifestyle</th>
                         <th>PRICE</th>
                         <th className='flex justify-center'>ACTION</th>
                     </tr>

@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Helmet } from 'react-helmet';
 import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Update = () => {
+    const { setAllData } = use(AuthContext)
     const singkeData = useLoaderData()
     const { _id, title, location, amount, roomType, lifestyle, description, contact, availability, email, name } = singkeData
 
-    const updateHandler = (e,) => {
+    const updateHandler = (e) => {
         e.preventDefault()
         const form = e.target
         const formData = new FormData(form)
@@ -23,16 +25,21 @@ const Update = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.matchedCount) {
-                    Swal.fire({
-                        icon: "success",
-                        title: "Post updated successfully",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
+                    fetch("http://localhost:5000/roommates")
+                        .then(res => res.json())
+                        .then(data => {
+                            setAllData(data)
+                            Swal.fire({
+                                icon: "success",
+                                title: "Post updated successfully",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        })
                 }
             })
 
-            
+
     }
     return (
         <div className="hero my-10 px-4">

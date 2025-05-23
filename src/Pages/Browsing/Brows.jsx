@@ -1,22 +1,30 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 
-const Brows = ({data}) => {
-    const {_id, title, availability, location, roomType, amount} = data
+const Brows = ({ index,singleData }) => {
+    const navigate = useNavigate()
+    const { _id, title, name, location, roomType, amount, availability } = singleData
     return (
-         <div>
-            <div className="rounded-md shadow-xl dark:bg-gray-200 border-t-8 border-[#DC143C] dark:text-gray-800">
-                <div className="flex flex-col justify-between p-6 space-y-8">
-                    <div className="space-y-2">
-                        <h2 className="text-3xl font-semibold break-words">{title}</h2>
-                        <p className="dark:text-gray-800 text-base font-normal">Room Type: <span className='font-semibold'>{roomType}</span></p>
-                        <p className="dark:text-gray-800 text-base font-normal">Ammount: <span className='font-semibold'>${amount}</span></p>
-                        <p className="dark:text-gray-800 text-base font-normal">Location: <span className='font-semibold'>{location}</span></p>
-                        <p className="dark:text-gray-800 text-base font-normal">Availability: <span className='font-semibold px-2 py-1 bg-blue-400 text-white rounded-[5px]'>{availability}</span></p>
-                    </div>
-                    <button type="button" className="flex-1 cursor-pointer w-full p-3 font-semibold rounded-md dark:bg-[#DC143C] dark:text-gray-50">See more</button>
-                </div>
-            </div>
-        </div>
+        <tr className='hover:bg-gray-200 duration-200'>
+            <td>
+                {index + 1}
+            </td>
+            <td>
+                <h1 className="flex items-center">
+                    <div className="">{name}</div>
+                </h1>
+            </td>
+            <td>
+                {title}
+            </td>
+            <td>{roomType}</td>
+            <td>{location}</td>
+            <td>${amount}</td>
+            <td className={`${ (availability === "Available") && "text-green-900" }`}>{availability}</td>
+            <th className='flex justify-center gap-2'>
+                <button onClick={() => navigate(`/details/${_id}`)} className="btn  bg-[#DC143C] duration-200 text-white btn-sm">See More</button>
+            </th>
+        </tr>
     );
 };
 

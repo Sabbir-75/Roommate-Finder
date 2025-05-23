@@ -7,7 +7,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const MyData = ({ index, singleData, myListing, setMyListing }) => {
     const {allData, setAllData} = use(AuthContext)
-    const { _id, title, location, amount, roomType } = singleData
+    const { _id, title, location, amount, roomType, lifestyle } = singleData
     const navigate = useNavigate()
 
     const deleteHandler = (id) => {
@@ -43,7 +43,7 @@ const MyData = ({ index, singleData, myListing, setMyListing }) => {
     }
     
     return (
-        <tr>
+        <tr className='hover:bg-gray-200 duration-200'>
             <td>
                 {index + 1}
             </td>
@@ -56,6 +56,7 @@ const MyData = ({ index, singleData, myListing, setMyListing }) => {
                 {roomType}
             </td>
             <td>{location}</td>
+            <td>{lifestyle}</td>
             <td>${amount}</td>
             <th className='flex justify-center gap-2'>
                 <button onClick={() => navigate(`/update/${_id}`)} className="btn  bg-teal-500 hover:bg-teal-600 duration-200 text-white btn-xs"><RiEdit2Fill /> Update</button>

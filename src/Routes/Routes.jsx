@@ -41,7 +41,8 @@ export const router = createBrowserRouter([
                 Component: MyListing
             },
             {
-                path: "/details",
+                path: "/details/:id",
+                loader: ({params}) => fetch(`http://localhost:5000/roommates/${params.id}`),
                 Component: Details
             },
             {
