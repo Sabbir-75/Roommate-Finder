@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React, { useContext } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 import { CgProfile } from "react-icons/cg";
 import logo from "../../assets/Green_Minimalist_Home_Logo___2_-removebg-preview.png"
@@ -7,7 +7,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { Bounce, toast } from 'react-toastify';
 
 const Navbar = () => {
-    const { userData, logout } = use(AuthContext)
+    const { userData, logout, theme, setTheme } = useContext(AuthContext)
     const navigate = useNavigate()
     const { pathname } = useLocation()
     const nav = <>
@@ -47,8 +47,13 @@ const Navbar = () => {
                 });
             })
     }
+
+    const toggleHandler = () => {
+        const newTheme = theme === "light" ? "dark" : "light";
+        setTheme(newTheme);
+    }
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar bg-base-100 shadow-sm border-b-2 border-bg-base-100">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -69,7 +74,24 @@ const Navbar = () => {
                     {nav}
                 </ul>
             </div>
-            <div className="mynewclass flex items-center navbar-end">
+            <div className="mynewclass flex items-center gap-3 navbar-end">
+                <label className="swap swap-rotate">
+                    {/* this hidden checkbox controls the state */}
+                    <input type="checkbox" onChange={toggleHandler} checked={theme === "dark"} />
+
+                    {/* sun icon */}
+                    <svg className="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24">
+                        <path d="M5 12a7 7 0 1114 0 7 7 0 01-14 0z" />
+                    </svg>
+
+                    {/* moon icon */}
+                    <svg className="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24">
+                        <path d="M21.64 13.65A9 9 0 1110.35 2.36a9 9 0 0011.29 11.29z" />
+                    </svg>
+                </label>
+
                 <div className='relative flex w-[70px] h-[70px] group items-center'>
                     {
                         userData ? <img className='w-[35px] h-[35px] flex items-center rounded-full object-cover' src={userData?.photoURL} /> : <CgProfile size={35} color='#DC143C' />

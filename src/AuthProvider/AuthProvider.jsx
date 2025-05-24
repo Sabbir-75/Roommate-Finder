@@ -13,13 +13,13 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-       const filteredData = allData.filter(data => data.availability === "Available")
-       const availablityData = filteredData.slice(-6).reverse()
-       setsortData(availablityData)
-    },[allData])
+        const filteredData = allData.filter(data => data.availability === "Available")
+        const availablityData = filteredData.slice(-6).reverse()
+        setsortData(availablityData)
+    }, [allData])
 
 
-    
+
     const createAccout = (email, password) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
@@ -59,6 +59,17 @@ const AuthProvider = ({ children }) => {
     }, [])
 
 
+
+    const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+    useEffect(() => {
+        localStorage.setItem("theme", theme);
+        document.documentElement.setAttribute("data-theme", theme);
+    }, [theme]);
+
+
+
+
     const authValue = {
         createAccout,
         userData,
@@ -72,7 +83,9 @@ const AuthProvider = ({ children }) => {
         sortData,
         setsortData,
         allData,
-        setAllData
+        setAllData,
+        theme,
+        setTheme,
     }
     return (
         <AuthContext value={authValue}>

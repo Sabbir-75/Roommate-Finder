@@ -8,6 +8,7 @@ import Details from "../Pages/Details/Details";
 import Browsing from "../Pages/Browsing/Browsing";
 import MyListing from "../Pages/MyListing/MyListing";
 import Update from "../Pages/Update/Update";
+import PrivateRoute from "../PrivetRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -29,7 +30,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/findoommate",
-                Component: AddRoommate
+                element: <PrivateRoute><AddRoommate></AddRoommate></PrivateRoute>
             },
             {
                 path: "/browsing",
@@ -38,17 +39,17 @@ export const router = createBrowserRouter([
             {
                 path: "/mylisting",
                 loader: () => fetch("http://localhost:5000/roommates"),
-                Component: MyListing
+                element: <PrivateRoute><MyListing></MyListing></PrivateRoute>
             },
             {
                 path: "/details/:id",
                 loader: ({params}) => fetch(`http://localhost:5000/roommates/${params.id}`),
-                Component: Details
+                element: <PrivateRoute><Details></Details></PrivateRoute>
             },
             {
                 path: "/update/:id",
                 loader: ({params}) => fetch(`http://localhost:5000/roommates/${params.id}`),
-                Component: Update
+                element: <PrivateRoute><Update></Update></PrivateRoute>
             },
         ]
     }

@@ -32,6 +32,7 @@ const AddRoommate = () => {
                     });
                 }
             })
+            form.reset()
     }
     return (
         <div className="hero my-10 px-4">

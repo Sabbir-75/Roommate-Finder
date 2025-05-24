@@ -1,10 +1,11 @@
 import React, { use } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { Bounce, toast } from 'react-toastify';
 
 const Login = () => {
+    const location = useLocation()
     const { signin, setUserData, googleAccount } = use(AuthContext)
     const Navigate = useNavigate()
     const loginHandler = (e) => {
@@ -28,7 +29,7 @@ const Login = () => {
                     transition: Bounce
                 });
                 setUserData(result.user)
-                Navigate("/")
+                Navigate(location.state || "/")
             })
             .catch(error => {
                 toast.error(`${error.code}`, {
@@ -60,7 +61,7 @@ const Login = () => {
                     theme: "colored",
                     transition: Bounce
                 });
-                Navigate("/")
+                Navigate(location.state || "/")
             })
             .catch(error => {
                 toast.error(`${error.code}`, {
