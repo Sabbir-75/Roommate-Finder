@@ -1,4 +1,14 @@
-# React + Vite
+# Website name : Roommate Hunt
+# Live site URL : 
+* Room Type
+* toommate Type
+* Contuct 
+* Update Post
+* Delete Post 
+* Like 
+* Theme Change(dark and light)
+
+# Require Packeg : React-simple-typewriter and React Awesome reveal 
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

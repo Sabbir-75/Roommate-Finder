@@ -9,6 +9,7 @@ import Browsing from "../Pages/Browsing/Browsing";
 import MyListing from "../Pages/MyListing/MyListing";
 import Update from "../Pages/Update/Update";
 import PrivateRoute from "../PrivetRoute/PrivateRoute";
+import Error from "../Pages/Error/Error";
 
 export const router = createBrowserRouter([
     {
@@ -38,19 +39,23 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/mylisting",
-                loader: () => fetch("http://localhost:5000/roommates"),
+                loader: () => fetch("https://roommate-finder-server-woad-eight.vercel.app/roommates"),
                 element: <PrivateRoute><MyListing></MyListing></PrivateRoute>
             },
             {
                 path: "/details/:id",
-                loader: ({params}) => fetch(`http://localhost:5000/roommates/${params.id}`),
+                loader: ({ params }) => fetch(`https://roommate-finder-server-woad-eight.vercel.app/roommates/${params.id}`),
                 element: <PrivateRoute><Details></Details></PrivateRoute>
             },
             {
                 path: "/update/:id",
-                loader: ({params}) => fetch(`http://localhost:5000/roommates/${params.id}`),
+                loader: ({ params }) => fetch(`https://roommate-finder-server-woad-eight.vercel.app/roommates/${params.id}`),
                 element: <PrivateRoute><Update></Update></PrivateRoute>
             },
         ]
+    },
+    {
+        path: "*",
+        element: <Error />
     }
 ])

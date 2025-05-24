@@ -21,7 +21,7 @@ const MyData = ({ index, singleData, myListing, setMyListing }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/roommates/${id}`, {
+                fetch(`https://roommate-finder-server-woad-eight.vercel.app/roommates/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

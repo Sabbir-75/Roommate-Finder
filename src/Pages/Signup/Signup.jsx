@@ -14,7 +14,7 @@ const Signup = () => {
         const form = e.target
         const formData = new FormData(form)
         const { name, email, photo, password } = Object.fromEntries(formData.entries())
-        console.log(name, email, photo, password);
+
 
         const pass = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/
         if (!pass.test(password)) {
@@ -34,7 +34,6 @@ const Signup = () => {
 
         createAccout(email, password)
             .then(result => {
-                console.log(result.user);
                 const profile = {
                     displayName: name,
                     photoURL: photo
@@ -42,7 +41,6 @@ const Signup = () => {
 
                 ProfileUpdate(profile)
                     .then(result => {
-                        console.log(result.user);
                         toast.success('🦄 Profile create Successfully', {
                             position: "top-right",
                             autoClose: 1000,
@@ -73,7 +71,7 @@ const Signup = () => {
 
             })
             .catch(error => {
-                // console.log(error.message);
+        
                 toast.error(`${error.code}`, {
                     position: "top-right",
                     autoClose: 1000,

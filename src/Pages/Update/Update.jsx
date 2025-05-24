@@ -15,7 +15,7 @@ const Update = () => {
         const formData = new FormData(form)
         const newFormData = Object.fromEntries(formData.entries())
 
-        fetch(`http://localhost:5000/roommates/${_id}`, {
+        fetch(`https://roommate-finder-server-woad-eight.vercel.app/roommates/${_id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -25,7 +25,7 @@ const Update = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.matchedCount) {
-                    fetch("http://localhost:5000/roommates")
+                    fetch("https://roommate-finder-server-woad-eight.vercel.app/roommates")
                         .then(res => res.json())
                         .then(data => {
                             setAllData(data)

@@ -2,7 +2,7 @@ import React, { createContext, use, useEffect, useState } from 'react';
 import { auth } from '../Firebase.config';
 import { createUserWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, updateProfile, signOut } from 'firebase/auth';
 export const AuthContext = createContext()
-const resallData = fetch("http://localhost:5000/roommates").then(res => res.json())
+const resallData = fetch("https://roommate-finder-server-woad-eight.vercel.app/roommates").then(res => res.json())
 
 const AuthProvider = ({ children }) => {
 

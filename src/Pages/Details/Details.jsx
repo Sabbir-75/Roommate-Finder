@@ -14,7 +14,7 @@ const Details = () => {
     const [postOwnerEmail, setPostOwnerEmail] = useState("");
 
     useEffect(() => {
-        fetch(`http://localhost:5000/roommates/${data._id}`)
+        fetch(`https://roommate-finder-server-woad-eight.vercel.app/roommates/${data._id}`)
             .then(res => res.json())
             .then(fetchedPost => {
                 setLikes(fetchedPost?.like || 0);
@@ -23,7 +23,7 @@ const Details = () => {
     }, [data]);
 
     const likeHandler = (id) => {
-        fetch(`http://localhost:5000/roommates/${id}/like`, {
+        fetch(`https://roommate-finder-server-woad-eight.vercel.app/roommates/${id}/like`, {
             method: 'POST',
         })
             .then(res => res.json())

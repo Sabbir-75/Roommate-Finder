@@ -11,7 +11,7 @@ const AddRoommate = () => {
         const formData = new FormData(form)
         const newFormData = Object.fromEntries(formData.entries())
 
-        fetch("http://localhost:5000/roommates", {
+        fetch("https://roommate-finder-server-woad-eight.vercel.app/roommates", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

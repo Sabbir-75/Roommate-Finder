@@ -4,12 +4,12 @@ import { initializeApp } from "firebase/app";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDAOaTUjriELy4bGH6JLfBj9RflKQYBbvM",
-  authDomain: "roommate-hunt-f15f1.firebaseapp.com",
-  projectId: "roommate-hunt-f15f1",
-  storageBucket: "roommate-hunt-f15f1.firebasestorage.app",
-  messagingSenderId: "1023986088995",
-  appId: "1:1023986088995:web:253feb8b599b8710c70596"
+  apiKey:import.meta.env.VITE_apiKey,
+  authDomain:import.meta.env.VITE_authDomain,
+  projectId:import.meta.env.VITE_projectId,
+  storageBucket:import.meta.env.VITE_storageBucket,
+  messagingSenderId:import.meta.env.VITE_messagingSenderId,
+  appId:import.meta.env.VITE_appId,
 };
 
 
