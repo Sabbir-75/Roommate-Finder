@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 
 const ShortData = ({ data }) => {
     const {_id, title, availability, location, roomType, amount, name} = data
+    const navigate  = useNavigate()
     return (
         <div>
             <div className="rounded-md shadow-xl dark:bg-gray-200 border-t-8 border-[#DC143C] dark:text-gray-800">
@@ -14,7 +16,7 @@ const ShortData = ({ data }) => {
                         <p className="dark:text-gray-800 text-base font-normal">Location: <span className='font-semibold'>{location}</span></p>
                         <p className="dark:text-gray-800 text-base font-normal">Availability: <span className='font-semibold px-2 py-1 bg-blue-400 text-white rounded-[5px]'>{availability}</span></p>
                     </div>
-                    <button type="button" className="flex cursor-pointer items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-[#DC143C] dark:text-gray-50">See more</button>
+                    <button onClick={() => navigate(`/details/${_id}`)}  type="button" className="flex cursor-pointer items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-[#DC143C] dark:text-gray-50">See more</button>
                 </div>
             </div>
         </div>
